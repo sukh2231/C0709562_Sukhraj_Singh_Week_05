@@ -1,87 +1,105 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-namespace C0707995
+
+namespace C0709562
 {
     class Program
     {
         static void Main(string[] args)
-
         {
             var a = new TestQuestion2();
-            a.PlayingWithForLoops();
+            //a.PlayingWithForLoops();
+
+            var b = new birthday_party();
+            b.setupPartyList();
+            b.printPartyList();
+
         }
     }
 
     class TestQuestion2
     {
-        public int myFavVariable = 0;
+        public int myFavoriteVariable = 0;
+
         public void PlayingWithForLoops()
         {
-            for (; MyMthod();)
+            // write a For Loop to Add 10 Numbers
+            while (MyMethod())
             {
-                if (myFavVariable > 10)
+                if (myFavoriteVariable > 10)
                 {
-                    Console.WriteLine("i ma so out of here");
+                    Console.WriteLine("i am so out of here!");
                     break;
                 }
-                Console.WriteLine("i am in for loop");
-
+                Console.WriteLine("oh no I have to go through this stupid loop again...");
             }
         }
-        public bool MyMthod()
+        public bool MyMethod()
         {
-            myFavVariable++;
+            myFavoriteVariable++;
             return true;
         }
     }
+
     class dog
     {
-        public dog(string name, string breed, dog next, dog prev)
+        public dog(string name, string breed)
         {
-            dogName = name;
-            dogbreed = breed;
-            next_dog = next;
-            previous_dog = prev;
+            dog_name = name;
+            dog_breed = breed;
         }
-        public string dogName;
-        public string dogbreed;
+
+        public dog()
+        {
+        }
+
+        public string dog_name;
+        public string dog_breed;
         public dog next_dog;
-        public dog previous_dog;
+        public dog prev_dog;
 
     }
-    class birthdayParty
-    {
 
+    class birthday_party
+    {
         public dog peanut;
-        public dog fifo;
-        public dog clarance;
+        public dog fifi;
+        public dog clarence;
         public dog roy;
 
         public dog head;
         public dog tail;
         public dog temporary;
-        public void pea()
+
+        public void setupPartyList()
         {
-            peanut = new dog("peanut", "bichon");
-            fifo = new dog("fifo", "poodle");
-            clarance = new dog("clarance", "german sheppard");
-            roy = new dog();
-            peanut.previous_dog = null;
-            peanut.next_dog = fifo;
-            fifo.previous_dog = peanut;
-            fifo.next_dog = clarance;
-            clarance.previous_dog = fifo;
-            clarance.next_dog = roy;
-            clarance.previous_dog = clarance;
-            clarance.next_dog = null;
+            peanut = new dog("Peanut", "Bichon");
+            fifi = new dog("Fifi", "Poodle");
+            clarence = new dog("Clarence", "German Sheppard");
+            roy = new dog("Roy", "Beagle");
+
+            peanut.prev_dog = null;
+            peanut.next_dog = fifi;
+            fifi.prev_dog = peanut;
+            fifi.next_dog = clarence;
+            clarence.prev_dog = fifi;
+            clarence.next_dog = roy;
+            roy.prev_dog = clarence;
+            roy.next_dog = null;
             head = peanut;
             tail = roy;
         }
-        public string printPartyList(dog startOfList, dog endOfList)
+
+        public string printPartyList()
         {
+            string inviteList = "*--";
+            temporary = head;
+            while (temporary.next_dog != null)
+            {
+                inviteList += temporary.dog_name + " * --- * ";
+            }
+
+            return inviteList;
         }
+
     }
 }
