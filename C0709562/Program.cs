@@ -1,6 +1,10 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+namespace C0707995
 
-namespace C0709562
 {
     class Program
     {
@@ -11,7 +15,7 @@ namespace C0709562
 
             var b = new birthday_party();
             b.setupPartyList();
-            b.printPartyList();
+            Console.WriteLine(b.printPartyList());
 
         }
     }
@@ -64,6 +68,8 @@ namespace C0709562
         public dog peanut;
         public dog fifi;
         public dog clarence;
+        public dog giselle;
+        public dog lulu;
         public dog roy;
 
         public dog head;
@@ -75,6 +81,8 @@ namespace C0709562
             peanut = new dog("Peanut", "Bichon");
             fifi = new dog("Fifi", "Poodle");
             clarence = new dog("Clarence", "German Sheppard");
+            giselle = new dog("giselle", "border collie");
+            lulu = new dog("lulu", "shitzu");
             roy = new dog("Roy", "Beagle");
 
             peanut.prev_dog = null;
@@ -82,7 +90,12 @@ namespace C0709562
             fifi.prev_dog = peanut;
             fifi.next_dog = clarence;
             clarence.prev_dog = fifi;
-            clarence.next_dog = roy;
+            clarence.next_dog = giselle;
+            giselle.prev_dog = clarence;
+            giselle.next_dog = lulu;
+            lulu.prev_dog = giselle;
+            lulu.next_dog = roy;
+
             roy.prev_dog = clarence;
             roy.next_dog = null;
             head = peanut;
@@ -95,9 +108,10 @@ namespace C0709562
             temporary = head;
             while (temporary.next_dog != null)
             {
+                temporary = temporary.next_dog;
                 inviteList += temporary.dog_name + " * --- * ";
             }
-
+            Console.ReadLine();
             return inviteList;
         }
 
