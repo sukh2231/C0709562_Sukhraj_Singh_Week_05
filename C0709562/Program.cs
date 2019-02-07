@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-namespace C0709562
+namespace C0707995
 {
     class Program
     {
@@ -39,10 +39,12 @@ namespace C0709562
     }
     class dog
     {
-        public dog(string name, string breed)
+        public dog(string name, string breed, dog next, dog prev)
         {
             dogName = name;
             dogbreed = breed;
+            next_dog = next;
+            previous_dog = prev;
         }
         public string dogName;
         public string dogbreed;
@@ -52,13 +54,34 @@ namespace C0709562
     }
     class birthdayParty
     {
+
+        public dog peanut;
         public dog fifo;
-        public dog poodle;
         public dog clarance;
         public dog roy;
-        public dog germanSheppard;
+
         public dog head;
         public dog tail;
         public dog temporary;
+        public void pea()
+        {
+            peanut = new dog("peanut", "bichon");
+            fifo = new dog("fifo", "poodle");
+            clarance = new dog("clarance", "german sheppard");
+            roy = new dog();
+            peanut.previous_dog = null;
+            peanut.next_dog = fifo;
+            fifo.previous_dog = peanut;
+            fifo.next_dog = clarance;
+            clarance.previous_dog = fifo;
+            clarance.next_dog = roy;
+            clarance.previous_dog = clarance;
+            clarance.next_dog = null;
+            head = peanut;
+            tail = roy;
+        }
+        public string printPartyList(dog startOfList, dog endOfList)
+        {
+        }
     }
 }
